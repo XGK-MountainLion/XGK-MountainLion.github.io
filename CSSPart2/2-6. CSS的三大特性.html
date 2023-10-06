@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS的三大特性</title>
+    <style>
+        div {
+            color: red;
+        }
+
+        div {
+            color: pink;
+            font-size: 2em;
+            line-height: 1.5;
+        }
+
+        image {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>(1) 层叠性</h1>
+    给同一个选择器的同一个样式设置不同的值时，后面的会覆盖掉前面的，例如:
+    <pre>
+        div {
+            color: red
+        }
+
+        div {
+            color: pink
+        }
+        有两个同时修饰div-color，只有下面这个会生效，在debug调试工具中，Style这一栏可以清晰的看到哪些样式正在生效
+
+        <img src="/IMG/Debug_Style.png" alt="">
+    </pre>
+
+    <!-- 分割线 ------------------------------------------->
+    <h1>(2) 继承性</h1>
+    子标签会继承父标签的一些样式(主要是和文字，颜色相关的，如text-, font-, line-， color等)，例如：
+    <pre>
+        div {
+            color: red;
+            font-size: 2em;
+        }
+        同样的可以在Debug-Style中看到这个样式是从哪里继承来的
+        <img src="/IMG/Debug_Style_Inhert.png" alt="">
+        // 有一个特殊的需要注意一下：行高的继承，当父元素设置行高没带单位时，子元素的行高会根据当前文字尺寸来计算，如果子元素没有设置文字尺寸，则会采用父元素的尺寸例如：
+        &lt;div>
+            &lt;p class="p1" style="font-size: 20px;">123&lt;/p>
+            &lt;p class="p2" style="font-size: 30px;">456&lt;/p>
+        &lt;/div>
+        此时 p1的行高就应该是20*1.5 = 30px；p2的行高应该是30*1.5 = 45px
+        <div>
+            <img src="/IMG/行高继承1.png">
+            <img src="/IMG/行高继承2.png">
+        </div>
+        <strong style="color: green; font-size: 2em;">// [Q] 如何让两个图片显示在同一行</strong> 
+    </pre>
+
+    <!-- 分割线 ------------------------------------------->
+    <h1 id="CSS的优先级">(3) 优先级</h1>
+    当不同的选择器内修改同一个样式时，就会出现优先级的问题，选择器不同的优先级权重：
+    <img src="/IMG/选择器的优先级权重.png" alt="">
+
+</body>
+
+</html>
