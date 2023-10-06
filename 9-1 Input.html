@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9-1 Input控件</title>
+</head>
+
+<body>
+
+    <iframe src="https://www.baidu.com" frameborder="0"></iframe>
+    <h1><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#value" target="_blank">文档</a></h1>
+    <h1>Input 输入控件</h1>
+    语法：&lt;input type="控件类型"/&gt; 注意这是一个单标签<br>
+    <p>
+        <img src="IMG/input控件的type属性.png" alt="">
+    </p>
+
+    <h3>Demo</h3>
+    <form action="demo.php" method="post" name="form1">
+        自定义按键 <input type="button"> <br>
+        复选框 <input type="checkbox"> <br>
+        选择本地文件 <input type="file"> <br>
+        隐藏 <input type="hidden"> <br>
+        图片 <input type="image"> <br>
+        密码输入框 <input type="password"> <br>
+        单选框 <input type="radio"> <br>
+        <input type="reset" value="重置按钮"> <br>
+        <input type="submit" value="提交按钮"> <br>
+        普通文本输入框 <input type="text"> <br>
+    </form>
+
+    <h3>input控件属性的使用场景</h3>
+    <p>
+        <img src="IMG/input控件的其他属性.png"> <br>
+        1、value：可用于设置控件的 <strong>默认值</strong> <br>
+        2、name：用于区别不同的表单元素，同一组 单选/多选框的name必须一样 <br>
+        3、checked: 对单选/复选框 有效，用于设置选中状态<br>
+    </p>
+
+    <form>
+        文本框：<input type="text" value="默认值"> <br>
+        密码框：<input type="password"> <br>
+
+        <!-- toggle要实现多选一的效果，不同的需要radio使用同一个name -->
+        Toggle：1<input type="radio" name="number"> 2<input type="radio" name="number"> 3<input type="radio"
+            name="number"> <br>
+
+        <!-- 复选框的那么也要相同，原因带查询 TODO:: -->
+        ToggleGroup: 4 <input type="checkbox" name="check"> 5 <input type="checkbox" name="check" id=""> 6 <input
+            type="checkbox" name="check" id="">
+    </form>
+</body>
+
+</html>

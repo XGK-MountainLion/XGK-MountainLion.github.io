@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS的字体属性</title>
+
+    <style>
+        .font-property {
+            color: green;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>font属性</h1>
+    font属性用于设置字体、大小、粗细、文本样式（斜体） <br>
+    font属性一般用来修饰Body标签
+    <pre>
+        p {
+            <span class="font-property">// 文字样式：normal, italic(倾斜)，常用于修饰&lt;em&gt; 标签，将倾斜的字体恢复正常</span>
+            font-style: italic；
+
+            <span class="font-property">// 字体粗细: normal(默认，等同于400). bold(等同于700)， bolder(特粗), lighter(细体);实际开发中一般都填数字 </span>
+            font-weight: bold;
+
+            <span class="font-property">// 设置大小，单位px是像素的意思；建议不要采用浏览器默认的size，不同的浏览器可能标准不一样，通常手动设置为16或14（一般网页的size） </span>
+            font-size: 20px;
+
+            <span class="font-property">// 设置字体, 支持设置多字体，每个字体之间使用逗号分隔；多字体的含义是从第一个开始遍历，直到遇到用户已安装的字体 </span>
+            font-family: "Microsoft Yahei", Arial;
+        }
+    </pre>
+
+    这几个声明也可以写成一行，以空格划分，但顺序必须固定
+    <pre>
+        p {
+            <span class="font-property">// 固定顺序为：style, weight, size, font-family；size和family为必填项，style和weight如果不填则取默认值</span> 
+            font: normal 700 20px "Microsoft Yahei";
+        }
+    </pre>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习-小米商城导航栏</title>
+    <style>
+        .navforXiaoMi dd {
+            width: 200px;
+            height: 30px;
+            /* CSS中没有直接提供单行竖直方向的居中声明，通常将line-height和height设置为同一个值就可以实现居中的效果；行高等于和盒子高度则居中，行高小于盒子高度则文字偏上，反之偏下 */
+            line-height: 30px;
+            background-color: #9f9d9d;
+        }
+
+        .navforXiaoMi dd a {
+            color: white;
+            text-decoration: none;
+
+            /*边距的设置现在暂时使用indent，后续会使用盒子模型来设置边距*/
+            text-indent: 1em;
+            display: block;
+        }
+
+        .navforXiaoMi dd:hover {
+            background-color: #ff6700;
+        }
+    </style>
+</head>
+
+<body>
+    <dl class="navforXiaoMi">
+        <dd><a href="">手机</a></dd>
+        <dd><a href="">电视</a></dd>
+        <dd><a href="">家电</a></dd>
+        <dd><a href="">笔记本 平板</a></dd>
+        <dd><a href="">出行 穿戴</a></dd>
+        <dd><a href="">耳机 音响</a></dd>
+        <dd><a href="">健康 儿童</a></dd>
+        <dd><a href="">生活 箱包</a></dd>
+        <dd><a href="">智能 路由器</a></dd>
+        <dd><a href="">电源 配件</a></dd>
+    </dl>
+</body>
+
+</html>

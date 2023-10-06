@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. 列表</title>
+</head>
+
+<body>
+    <h1>列表</h1>
+    <p>最大的特点是整洁对其，常用来布局</p>
+
+    列表项语法：&lt;li&gt; &lt;/li&gt;; li之间可以插入任意网页元素 <br>
+
+    <h3>1.无序列表</h3>
+    <p>
+        语法：&lt;ul&gt; &lt;/ul&gt; 意为: Unorder List<br>
+    </p>
+    <p>
+        注意：<br>
+        ul和li是配合使用的，ul之间只有li会被识别为列表项(前面加上黑点) <br>
+    </p>
+
+    例如：
+    <ul>
+        <li>L1</li>
+        123
+        <li>L2</li>
+        <li>
+            <p>456</p>
+        </li>
+    </ul>
+
+    <h3>2.有序列表</h3>
+    <p>
+        语法：&lt;ol&gt; 一个或多个li &lt;/ol&gt; 意为：Order List <br>
+        和无序列表的差别在于前面的黑点变成了阿拉伯数字
+    </p>
+
+    <p>
+        例如：
+    <ol>
+        <li>ol1</li>
+        <li>ol2</li>
+        <li>ol3</li>
+    </ol>
+    </p>
+
+    <h3>3.自定义列表</h3>
+    自定义列表和前两者的区别在于，有一个Title
+    <p>
+        语法: <br>
+        (1) &lt;dl&gt; &lt;/dl&gt; 类比 ol和ul<br>
+        (2) &lt;dt&gt; &lt;/dt&gt; 列表项的title<br>
+        (3) &lt;dd&gt; &lt;/dd&gt; 类比li<br>
+    </p>
+
+    <p>
+        例如：
+    <dl>
+        <dt>Title</dt>
+        <dd> 1 </dd>
+        <dd>
+            <ul>
+                <li>u1</li>
+                <li> u2 </li>
+            </ul>
+        </dd>
+        <dd>
+            <ol>
+                <li>o1</li>
+                <li>o2</li>
+            </ol>
+        </dd>
+        <dd> 4 </dd>
+    </dl>
+    </p>
+</body>
+
+</html>

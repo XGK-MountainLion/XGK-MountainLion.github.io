@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基础选择器</title>
+    <style>
+        .red {
+            color: red;
+            font-size: 20px;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .orange {
+            color: orange;
+        }
+
+        #pz {
+            color: aqua;
+            font-size: 25px;
+        }
+
+        * {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        1、选择器
+    </h2>
+    <p>
+        选择器的作用：筛选出要修改样式的标签，<a
+            href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors">选择器文档总览</a> <br>
+    </p>
+    <p>
+        选择器大致可以分为两大类：基础选择器、复合选择器 <br>
+    </p>
+
+    <h3>1-1 基础选择器</h3>
+
+    <h4 class="orange">（1）标签选择器</h4>
+    影响这个页面中某类标签的所有示例，语法：
+    <pre class="green">
+        // 选择器直接填要修改的标签
+        p {
+            color: red;
+        }
+    </pre>
+
+    <h4 class="orange">（2）类选择器</h4>
+    影响这个页面中使用了指定class的标签，语法：
+    <pre>
+        // CSS侧: 选择器填 "点 + 自定义className"
+        .className1 {
+            声明1;
+        }
+        
+        .className2 {
+            声明2;
+        }
+
+        // HTML侧: 注意一个标签内可以指定多个类名，类名之间使用空格来分隔
+        &lt;p class="className1 className2"&gt; 233 &lt;/p&gt; //若className1和className2修改的内容有重叠，对于重叠部分来说，写在后面的效果覆盖前面，例如这里只会生效className2
+    </pre>
+
+    <h4 class="orange">（3）ID选择器</h4>
+    影响使用这个ID的标签，语法：
+    <pre>
+    // CSS侧：
+    #idName {
+        声明1；
+        声明2；
+    }
+
+    // HTML侧：
+    &lt;p id="idName" class="className1"&gt; 啦啦啦 &lt;/p&gt; //id和class同时作用于一个标签时，id的内容会覆盖重叠部分
+    </pre>
+
+    <p style="color: red; font-size: 22px;">
+        ID选择器和类选择的区别: ID不可复用（因为ID具有唯一性，严禁多个标签共用一个ID，虽然HTML不会报错，但在js中使用时会报错）<br>
+        类选择器在修改样式中使用最多，ID选择器一般作用域页面唯一的元素上，常与JS搭配使用
+    </p>
+
+    <h4 class="orange">（4）通配符选择器</h4>
+    影响当前页面中的所有元素，语法：
+    <pre>
+        * {
+            声明1；
+            声明2；
+        }
+        // 优先级是最低的，重叠部分会被其他任意一种选择器覆盖，通常只有特殊情况下才会使用，例如：消除所有元素标签的内外边距
+    </pre>
+</body>
+
+</html>

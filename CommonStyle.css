@@ -1,0 +1,5 @@
+/* 在CSS文件中不需要标签，直接写样式 */
+strong {
+    color: red;
+    font-size: 2em;
+}

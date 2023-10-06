@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪类选择器</title>
+
+    <style>
+        .fakeClassFilter a:link {
+            color: green;
+            text-decoration: none;
+        }
+
+        .fakeClassFilter a:visited {
+            color: blueviolet;
+        }
+
+        .fakeClassFilter a:hover {
+            color: darkgoldenrod;
+        }
+
+        strong {
+            color: red;
+            font-size: 2em;
+        }
+
+        .question {
+            color: blue;
+            font-size: 18px;
+        }
+
+        .formFocusFilter input:focus {
+            background-color: red;
+        }
+
+        p:hover {
+            color: orange;
+        }
+
+        p:active {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>伪类选择器</h1>
+
+    伪类选择器用于筛选出特定状态下的标签，语法为 <strong>标签名:关键字</strong>，例如：
+    <pre>
+        p:hover {
+            color: red;
+        }
+
+        p:active {
+            font-size: 2em;
+        }
+    </pre>
+
+    <p>伪类选择器可以选择的标签有很多，常见的有：链接、结构、表单等</p>
+
+    <h2>（1）链接伪类选择器</h2>
+    <pre>
+        // 伪类选择器也可以和其他的选择器组合使用
+        .fakeClassFilter a:link {
+            color: green;
+        }
+    </pre>
+
+    <h4>链接伪类选择器的常用<strong>关键字</strong>如下：</h4>
+    <img src="../IMG/伪类选择器_链接.png" alt=""> <br>
+    其中link作为默认的关键字，对a而言，默认状态就是link，所以实际开发中通常会使用a {}而非a:link {}
+
+    <div class="fakeClassFilter">
+        <h4>Demo：</h4>
+        <a href="#">fakeClassFilter->a</a>
+    </div>
+
+    <h3>疑问：</h3>
+    <p>
+        <span class="question">
+            【Q1】CSS样式在style中的顺序对绘制有什么关系？（当a:hover写在a:visited之前时，对于已经点过的链接hover效果不生效，调换顺序之后表现正常）<br>
+        </span>
+        【A】对于链接伪类选择器来说，请按照固定顺序来写： <strong>link -> visited -> hover -> active</strong>
+    </p>
+
+    <p>
+        <span class="question">
+            【Q2】为什么给body设置了CSS样式之后，body中链接的样式并没有生效？<br>
+        </span>
+        【A】由于a(链接)在浏览器中有默认的样式，所以需要给链接单独指定样式
+    </p>
+
+    <strong>--------------------------------------------- 分割线 ---------------------------------------------</strong>
+
+    <H2>（2）焦点伪类选择器</H2>
+    :focus伪类选择器主要用来筛选获得焦点的表单元素；焦点可以理解为光标，通常情况下&lt;input&gt;标签这一类的表单元素才能获取较点，故而这个选择器主要针对表单元素。
+    <pre>
+        //同样 它也可以作为一个基础选择器与其他的选择器进行复合筛选操作
+        .formFocusFilter input:focus {
+            background-color:red;
+        }
+    </pre>
+
+    Demo：<br>
+    <form action="" class="formFocusFilter">
+        form-text<input type="text">
+    </form>
+    text<input type="text">
+</body>
+
+</html>

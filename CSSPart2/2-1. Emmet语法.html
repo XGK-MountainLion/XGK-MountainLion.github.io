@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .one {
+            text-align: right;
+            height: 20px;
+            text-decoration: 20em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>快速生成HTML的语法</h1>
+    输入语法后按tab即可
+    <ol>
+        <li> 快速生成多个相同的标签可以使用乘号（*） </li>
+        <li> 父子关系使用 &gt; 符号，同时也可以和上一条复合使用 例如 ol&gt;li*2 </li>
+        <li> 兄弟关系使用 + 符号， 例如: dl&gt;dt+dl*2 </li>
+        <li> 生成带 类名或id 的标签，直接在标签名后跟上 .clssName或#id 即可 </li>
+        <li> 自增和自减，需要用的$和@ </li>
+        <li> 生成标签的同时像填充内容则使用{} </li>
+    </ol>
+    <pre>
+        // 占位符
+        ul>li.item$$$*11 ,多出来的$表示占位符 item001, item002 ...... item011;
+
+        // 自减
+        ul>li.item$@-*5 等于 item5, item4 ...... item1;
+
+        // 指定起点和长度的自增
+        ul>li.item$@3*5 等于 item3, item4 ...... item7;
+
+        // 指定起点和长度的自减
+        ul>li.item$@-3*5 等于 item7, item6 ...... item3;
+
+        // 生成标签同时填充内容
+        p>{click}+a{here}+{todo} 等于 &lt;p&gt;click &lt;a href=""&gt;here&lt;/a&gt; todo&lt;/p&gt;
+
+    </pre>
+    <h1>快速生成CSS的语法</h1>
+    css的语法就相对简单，按照小驼峰缩写即可，例如:
+    <pre>
+        tar = text-align: right;
+        h20 = height: 20px;
+        td20e = text-decoration: 20em;
+    </pre>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        p {
+            /* transparent是将背景设置为全透明 */
+            /* background-color: transparent; */
+            background-color: pink;
+        }
+
+        div {
+            background-image: url(../IMG/琦玉老师.jpg);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>背景属性</h1>
+    <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background"> 文档地址 </a>
+
+    <h2>(1) 设置元素的背景颜色</h2>
+    <pre>
+        p {
+            background-color: pink;
+        }
+    </pre>
+
+    <p>
+        需改背景颜色
+    </p>
+
+    <h2>(2) 背景图片</h2>
+    实际开发中常用于logo、装饰性小图片、超大背景图、精灵图(sprite)，优点在于便于控制位置
+    <pre>
+        background-image: none或者url(路径)
+    </pre>
+
+    <div>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+        <span>1234</span> <br>
+    </div>
+
+    <h2>(3) 背景平铺</h2>
+    使用背景图铺满整个元素空间，如果背景图小于元素尺寸则会滚动重复出现
+    <pre>
+        background-repeat: repeat(横向和竖向平铺) | no-repeat | repeat-x（横向平铺） | repeat-y（竖向平铺）
+        这个属性的默认值是repeat
+    </pre>
+</body>
+
+</html>

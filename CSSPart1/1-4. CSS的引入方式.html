@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS的引入方式</title>
+</head>
+
+<body>
+    <h1>CSS的引入方式</h1>
+    <pre>
+        // 行内: 直接写在标签内部，各个声明之间由分号分隔; 只能作用于当前这个标签【不可复用】
+        &lt;p style="color: red;"&gt; 段落文本&lt;/p style=""&gt; 段落文本
+
+        // 内部：在head标签中添加style标签，只能作用于当前HTML文件【局部复用】
+        &lt;style&gt;
+            p {
+                color: red;
+            }
+        &lt;/style&gt;
+
+        // 外部：写在CSS文件中，能作用于所有引入了这个CSS文件的HTML; 在CSS文件中，不需要添加style标签了，专注于内容即可【可复用】
+        p {
+            color: red;
+        }
+        
+        // 在HTML的head标签中，使用link标签来引入CSS文件, 例如：
+        &lt;link rel="stylesheet" href="../一、Demo_CSS.css"&gt;
+    </pre>
+
+    <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link">link标签文档</a>
+</body>
+
+</html>

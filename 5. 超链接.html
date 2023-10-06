@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. 超链接</title>
+</head>
+
+<body>
+    <h1>(5) 超链接</h1>
+    作用：从一个网页跳转到另一个网页，a 意为 anchor <br>
+    <p>
+        语法：&lt;a href="目标地址" target="目标窗口的弹出方式"&gt; 各种网页元素（文本、图片、表格、音频、视频等） &lt;/a&gt; <br>
+        <img src="IMG/超链接语法格式.png">
+    </p>
+
+    链接分类：<br>
+    1、外部链接: href后跟一个url地址, 例如：<a href="https://www.baidu.com" target="_blank">Baidu</a> 注意 url地址一定是http(s):// 开头的<br>
+    2、内部链接：href后跟一个相对路径即可 <br>
+    3、空链接： href后跟一个#表示place holder, 例如：<a href="#" target="_blank"> 空连接 </a> <br>
+    4、下载链接：href后跟一个文件或一个压缩包，就会下载这个文件 <br>
+    5、锚点链接(快速定位到页面内的某个位置，类似goto) <br>
+    href后跟#tag, 例如：&lt;a href="#成就_tag" &gt; <br>
+    在目标位置需要用id=tag来加标签，例如：&lt;h3 id=成就_tag&gt;成就&lt;/h3&gt; <br>
+    例如：<a href="7. 表格.html#表格_演示"> 跳转到(2) </a> 注意: <br>
+    (1) 当同一个页面内有多个同名的跳转标签时，只有第一个会生效 <br>
+    (2) 超链接支持跳转到另一个网页并定位到指定位置，语法为: &lt;a href="{目标表地址}#{位置tag}"&gt;
+</body>
+
+</html>

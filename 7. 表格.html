@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. 表格</title>
+</head>
+
+<body>
+    <h1>(7) 表格</h1>
+    <h3>7-1 表格的主要作用</h3>
+    展示数据（页面布局）
+    <h3>7-2 语法</h3>
+    最外层是 &lt;table&gt; &lt;/table&gt; 表示一个table，一个table中有一个或多个tr<br>
+    第二层是 &lt;tr&gt; &lt;/tr&gt; 表示行，一行中有一个或多个br <br>
+    第三层有 <br>
+    {<br>
+    (1) &lt;td&gt; 意为table data 具体数据，可以是任意网页元素 &lt;/td&gt;<br>
+    (2) &lt;th&gt; 意为table head 表头 &lt;/th&gt; 表头中的文本会加粗、居中<br>
+    }
+    <h3>7-3 表格属性</h3>
+    属性只能存在与table标签内,如下图 <br>
+    注意：实际开发中用不到，都是通过css来设置的 <br>
+    <img src="IMG/表格属性.png"> <br>
+
+    <h3>7-4 表格结构</h3>
+    嵌套在table标签内，类似#region的用法 <br>
+    头部区域：&lt;thead&gt; &lt;/thead&gt; <br />
+    主体区域：&lt;tbody&gt; &lt;/tbody&gt;
+
+    <h3>7-5 合并单元格</h3>
+    在要合并的单元格起点td标签中添加下面的特性（关于起点的定义：竖向合并时最上方为目标，左右合并时最左边为目标）<br>
+    rowspan="跨行（竖向）合并数量" <br>
+    colspan="跨列（横向）合并数量" <br>
+    <img src="IMG/合并单元格示意图.png"><br>
+
+    <h3 id="表格_演示"> 综合示例 </h3>
+    <table align="center" border="50" cellpadding="10" cellspacing="5" width="20%">
+        <thead>
+            <tr>
+                <th>链接</th>
+                <th>文本1</th>
+                <th>文本2</th>
+                <th>文本3</th>
+                <th>文本4</th>
+                <th>图片</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td><a href="https://www.baidu.com" target="_blank"> Baidu </a></td>
+                <td colspan="2">左右合并 3-4</td>
+                <td>5</td>
+                <td>6</td>
+                <td><img src="IMG/琦玉老师.jpg"></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td rowspan="2">上下合并 3-4</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td colspan="3" rowspan="2">左右 + 上下合并</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
