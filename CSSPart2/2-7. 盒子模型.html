@@ -35,6 +35,34 @@
     </p>
 
     <img src="/IMG/盒子模型的组成.png" alt="">
+
+    <h3>1-1 border</h3>
+    <p>
+        <strong>border-width</strong>: 通常给定具体的数值，以像素为单位<br>
+        <strong>border-style</strong>: 样式有许多可选的，参考下图：<br>
+        <img src="/IMG/Border_Style.png" alt=""> <br>
+        实际开发中最常用的三个为：<strong>solid, dotted, dashed</strong>; 其余的由于兼容性问题很少使用 <br>
+        <strong>border-color</strong>: 和其他的颜色用法一致
+    </p>
+
+    <p>
+        <strong>border复合写法没有固定的顺序关系，开发中通常是按照：width，style，color的顺序来写 </strong> <br>
+    </p>
+    <div style="border: solid 0.5em; padding: 10px;">
+        <span style="border: pink 0.5em dashed;">
+            我是一个span，我有一个边框
+        </span>
+        <span style="border: 10px dotted red;">
+            我是另一个span
+        </span>
+    </div>
+
+    <p style="border-top: 5px solid red; border-left: 10px dotted orange; border-bottom: 5px dashed blueviolet;">
+        border的上下左右四条线是可以分开单独描述的 <br>
+        只需要在border后面加上一个表示的方位的后缀即可，例如：<br>
+        border-top: 5px solid red; <br>
+        border-bottom: 10px dashed blueviolet;
+    </p>
 </body>
 
 </html>
