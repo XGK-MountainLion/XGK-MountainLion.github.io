@@ -5,6 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>盒子模型</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            border: solid;
+        }
+    </style>
 </head>
 
 <body>
@@ -63,6 +73,28 @@
         border-top: 5px solid red; <br>
         border-bottom: 10px dashed blueviolet;
     </p>
+
+    <p>
+        当表格中两个相邻的单元格都设置了边框，但间距为0时，左元素的右边边框和右元素的左边框会紧贴，看起来就会粗一些，如下图： <br>
+        <img src="/IMG/边框重叠.png" alt=""> <br>
+
+        要解决这个问题使用border-collapse属性，这个属性可以合并相邻的边框
+    </p>
+    <pre>
+        <strong style="color: green; font-size: 1.5em;">// 注意，与视频教程中的差异在于，当前版本这个属性是作用于table的而非td</strong> 
+        table {
+            border-collapse: collapse;
+        }
+    </pre>
+
+    <table cellspacing="0">
+        <tbody>
+            <tr>
+                <td>123</td>
+                <td>456</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 
 </html>
