@@ -14,6 +14,36 @@
         td {
             border: solid;
         }
+
+        /* .demo {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            border: solid 10px;
+            padding: 10px;
+        } */
+
+        .marginMerge {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+
+            margin: 10px 20px 20px 10px;
+        }
+
+        .dMerge {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            margin-top: 30px;
+        }
+
+        .dMergeSon {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            margin-top: 40px;
+        }
     </style>
 </head>
 
@@ -46,55 +76,135 @@
 
     <img src="/IMG/盒子模型的组成.png" alt="">
 
-    <h3>1-1 border</h3>
-    <p>
-        <strong>border-width</strong>: 通常给定具体的数值，以像素为单位<br>
-        <strong>border-style</strong>: 样式有许多可选的，参考下图：<br>
-        <img src="/IMG/Border_Style.png" alt=""> <br>
-        实际开发中最常用的三个为：<strong>solid, dotted, dashed</strong>; 其余的由于兼容性问题很少使用 <br>
-        <strong>border-color</strong>: 和其他的颜色用法一致
-    </p>
+    <h3>1-1 border 边框</h3>
+    <div style="background-color: rgb(255, 228, 177); padding-left: 1%;">
+        <p>
+            <strong>border-width</strong>: 通常给定具体的数值，以像素为单位<br>
+            <strong>border-style</strong>: 样式有许多可选的，参考下图：<br>
+            <img src="/IMG/Border_Style.png" alt=""> <br>
+            实际开发中最常用的三个为：<strong>solid, dotted, dashed</strong>; 其余的由于兼容性问题很少使用 <br>
+            <strong>border-color</strong>: 和其他的颜色用法一致
+        </p>
 
-    <p>
-        <strong>border复合写法没有固定的顺序关系，开发中通常是按照：width，style，color的顺序来写 </strong> <br>
-    </p>
-    <div style="border: solid 0.5em; padding: 10px;">
-        <span style="border: pink 0.5em dashed;">
-            我是一个span，我有一个边框
-        </span>
-        <span style="border: 10px dotted red;">
-            我是另一个span
-        </span>
+        <p>
+            <strong>border复合写法没有固定的顺序关系，开发中通常是按照：width，style，color的顺序来写 </strong> <br>
+        </p>
+        <div style="border: solid 0.5em; padding: 10px;">
+            <span style="border: pink 0.5em dashed;">
+                我是一个span，我有一个边框
+            </span>
+            <span style="border: 10px dotted red;">
+                我是另一个span
+            </span>
+        </div>
+
+        <p style="border-top: 5px solid red; border-left: 10px dotted orange; border-bottom: 5px dashed blueviolet;">
+            border的上下左右四条线是可以分开单独描述的 <br>
+            只需要在border后面加上一个表示的方位的后缀即可，例如：<br>
+            border-top: 5px solid red; <br>
+            border-bottom: 10px dashed blueviolet;
+        </p>
+
+        <p>
+            当表格中两个相邻的单元格都设置了边框，但间距为0时，左元素的右边边框和右元素的左边框会紧贴，看起来就会粗一些，如下图： <br>
+            <img src="/IMG/边框重叠.png" alt=""> <br>
+
+            要解决这个问题使用border-collapse属性，这个属性可以合并相邻的边框
+        </p>
+        <pre>
+            <strong style="color: green; font-size: 1.5em;">// 注意，与视频教程中的差异在于，当前版本这个属性是作用于table的而非td</strong> 
+            table {
+                border-collapse: collapse;
+            }
+        </pre>
+
+        <table cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>123</td>
+                    <td>456</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-    <p style="border-top: 5px solid red; border-left: 10px dotted orange; border-bottom: 5px dashed blueviolet;">
-        border的上下左右四条线是可以分开单独描述的 <br>
-        只需要在border后面加上一个表示的方位的后缀即可，例如：<br>
-        border-top: 5px solid red; <br>
-        border-bottom: 10px dashed blueviolet;
-    </p>
-
+    <h3>1-2 padding 内边距</h3>
     <p>
-        当表格中两个相邻的单元格都设置了边框，但间距为0时，左元素的右边边框和右元素的左边框会紧贴，看起来就会粗一些，如下图： <br>
-        <img src="/IMG/边框重叠.png" alt=""> <br>
-
-        要解决这个问题使用border-collapse属性，这个属性可以合并相邻的边框
-    </p>
+        <strong>border复合写法没有固定的顺序关系，开发中通常是按照：width，style，color的顺序来写 </strong> <br>
+        同样的可以设置上下左右的内边距，<strong>MDN关键字：padding-left/right/top/bottom</strong> <br>
+        复合写法：
     <pre>
-        <strong style="color: green; font-size: 1.5em;">// 注意，与视频教程中的差异在于，当前版本这个属性是作用于table的而非td</strong> 
-        table {
-            border-collapse: collapse;
+            padding: 5px; // 上下左右都是5
+            padding: 5px 6px; // top/bottom left/right
+            padding: 5px 6px 7px; // top left/right bottom
+            padding: 5px 6px 7px 8px; // top right bottom left (上为起点，顺时针顺序)
+        </pre>
+    </p>
+
+    <div class="demo">
+        <p>
+            内边距和边框对盒子模型的尺寸都是会有影响的
+        </p>
+        <pre>
+            .demo {
+                width: 200px;
+                height: 200px;
+                background-color: green;
+                border: solid 10px;
+                padding: 10px;
+            }
+        </pre>
+        <img src="/IMG/影响盒子模型的尺寸.png" alt=""> <br>
+        如上图所示，原本设置宽高为200*200，在内外边框的加持下，最终盒子模型的尺寸为240*240
+    </div>
+
+    <h3>1-3 margin 外边距</h3>
+    <p>
+        同样外边距也可以分开设置上下左右, <strong>MDN关键字：margin-left/right/top/bottom</strong> <br>
+        margin的复合写法规则和padding完全一致
+    </p>
+
+    <h4>(1) margin的典型应用:块级盒子水平居中</h4>
+    <p>
+        在设置了宽度width的情况下，将margin-left/right设置为auto即可 <br>
+        PS：行内元素和行内块元素要想实现水平居中，只需给其父元素添加一个 <strong style="font-size: 2em;">text-align:center;</strong> 即可
+    </p>
+
+    <h4>(2) 平级块元素的上下间距合并</h4>
+    有两个同一层级的，<strong>上下相邻</strong>的块元素(左右相邻的并不会合并)，上面的块设置了下边距，下面块设置了上边距时，<strong
+        style="color: red; font-size: 1.5em;">他们的间距是取二者的较大值，而不是直接相加;</strong>遇到这种情况时，通常只给一个盒子添加外边距<br>
+    <p>
+        可在网页中debug下面的两个元素查看div的上下间距和span的左右间距
+    </p>
+    <div class="marginMerge" style="width: 200px; height: 200px; background-color: green;">
+        <span class="marginMerge">123</span>
+        <span class="marginMerge">456</span>
+    </div>
+
+    <div class="marginMerge"></div>
+
+    <h4>(3) 嵌套款元素的上下间距塌陷</h4>
+    和前面提到的合并类似，嵌套的上下元素之间同时设置了Top或Bottom时，<strong
+        style="color: red; font-size: 1.5em;">他们的真是间距并非相加而是取最大值生效;</strong>遇到这种情况时可以给父元素设置border-top或是padding-top或是加overflow:hidden（后续会解释这个是什么）
+    <div class="dMerge">
+        <div class="dMergeSon">
+
+        </div>
+    </div>
+
+    <h2>总结</h2>
+    <pre>
+        <strong>1.清除内外边距：</strong> 每个网页元素其实都有自己默认的内外边距，由于各个浏览器的默认值不一样，为了保证我们的现过在各个浏览器下的统一性，开发中一般先清理掉默认的内外边距，再进行设置
+
+        <strong>// 使用通配符选择器，将所有标签的内外边距都设置为0即可</strong>
+        * {
+            padding: 0;
+            margin: 0;
         }
+
+        <strong>2.关于行内元素/行内块元素：</strong> 为了兼容性，行内元素和行内块元素最后只设置左右的内外边距（设置了也没用，还有风险）；一定要设置上下的内外边距时，把它转为块元素即可
     </pre>
 
-    <table cellspacing="0">
-        <tbody>
-            <tr>
-                <td>123</td>
-                <td>456</td>
-            </tr>
-        </tbody>
-    </table>
 </body>
 
 </html>
