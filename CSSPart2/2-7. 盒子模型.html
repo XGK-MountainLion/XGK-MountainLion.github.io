@@ -44,6 +44,15 @@
             background-color: skyblue;
             margin-top: 40px;
         }
+
+        .radius {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border: 5px solid;
+            border-radius: 10px 20px 30px 50px / 100px;
+            box-shadow: 20px 10px 15px green;
+        }
     </style>
 </head>
 
@@ -192,6 +201,32 @@
         </div>
     </div>
 
+    <h4>(4) 圆角边框</h4>
+    <strong>MDN关键字: border-radius</strong>
+
+    <pre>
+        border-radius: 10px 20px 30px 40px / 50px
+        // 1. 四个角可以设置不同的值, 左上角点为起点，顺时针顺序
+        // 2. 40px/50px 表示圆角的形状是椭圆，两个数值表示x方向的轴距和y方向的轴距，也就是以左下角为原点，向右40再向上50为这个椭圆的几何中心
+    </pre>
+
+    <h4>(5) 盒子阴影</h4>
+    <p>
+        <strong>MDN关键字：box-shadow</strong> <br>
+        可以设置影子的：x/y方向的偏移，模糊程度(数值越大越模糊，可以理解为光源到box的距离)，尺寸(视觉上看起来像缩放)，影子的颜色，样式（方向朝内或是朝外）<br>
+        其中x/y方向的偏移量是必填，其余都是选填
+    </p>
+
+    <p>
+
+        顺带一提，文字阴影的<strong>MDN关键字：text-shadow</strong><br>
+        text-shadow可以看作是box-shadow的删减版，他没有尺寸和样式这两个属性，其余的完全一样
+    </p>
+
+    <div class="radius" style="text-shadow: 5px 5px 1.5px green;">
+        <br>左下角椭圆50px/100px
+    </div>
+
     <h2>总结</h2>
     <pre>
         <strong>1.清除内外边距：</strong> 每个网页元素其实都有自己默认的内外边距，由于各个浏览器的默认值不一样，为了保证我们的现过在各个浏览器下的统一性，开发中一般先清理掉默认的内外边距，再进行设置
@@ -203,6 +238,7 @@
         }
 
         <strong>2.关于行内元素/行内块元素：</strong> 为了兼容性，行内元素和行内块元素最后只设置左右的内外边距（设置了也没用，还有风险）；一定要设置上下的内外边距时，把它转为块元素即可
+        <strong>3.盒子阴影不占空间，不会影响其他盒子的排列</strong>
     </pre>
 
 </body>
