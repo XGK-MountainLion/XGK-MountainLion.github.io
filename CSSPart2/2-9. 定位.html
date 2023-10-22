@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位 Position</title>
+    <style>
+        .container {
+            background-color: gray;
+        }
+
+        .container1 {
+            background-color: red;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            /* z-index: 2; */
+        }
+
+        .container2 {
+            background-color: green;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>定位 Position</h1>
+
+    <h2>(1) 定位的使用场景</h2>
+    <p>
+        1.使某个盒子能在一个盒子中自由移动，并且能盖住其他的盒子<br>
+        2.使某些元素锚定在可视区域内
+    </p>
+
+    <h2>(2) 定位的组成</h2>
+    <p>
+        定位由<mark>定位模式</mark>和<mark>偏移量</mark>组成 <br>
+    </p>
+    <p>
+        定位模式通过position属性设置，常用的有四种：<br>
+        <img src="/IMG/常用的四种position.png" alt="">
+    </p>
+    <p>
+        偏移量通过top, bottom, left, right四个属性设置:<br>
+        <img src="/IMG/偏移量属性的含义.png" alt=""><br>
+        和Unity的RectTransform一致
+    </p>
+
+    <h3>2-1 静态定位 static</h3>
+    static是默认的定位方式，表示不使用定位，没有偏移量，视作标准流就好，这种在布局中很少使用
+
+    <h3>2-2 相对定位 relative</h3>
+    <p>
+        relative在计算偏移量时，参照物是自身原来的位置（也就是在标准流中的位置）<br>
+        特点：不脱标（与float不同的地方在于，使用position移动之后也不会影响标准流的布局）<br>
+        使用场景：通常用于配合绝对定位使用，可以理解为将自己变为一个绝对定位元素的容器，顺便调整一下位置
+    </p>
+
+    <h3>2-3 绝对定位 absolute</h3>
+    <p>
+        absolute在计算偏移量时，参照物是自己祖先中第一个设置了position的盒子，如果没有就选Document（浏览器边框）<br>
+        特点：脱标 <br>
+        使用场景：真正需要挪位置的元素使用
+    </p>
+
+    <div class="container">
+        <div class="element_L"></div>
+        <div class="element_R"></div>
+        <div class="element_LT"></div>
+        <p>5</p>
+        <p>5</p>
+        <p>5</p>
+        <p>5</p>
+        <p>5</p>
+        <div style="position: sticky; bottom: 20px; color: red;">test</div>
+        <p>5</p>
+        <p>5</p>
+        <p>5</p>
+        <p>5</p>
+        <p>5</p>
+        <p>5</p>
+        <p>5</p>
+        <p>5</p>
+        <p>5</p>
+        <p>5</p>
+        <p>5</p>
+        <p>5</p>
+
+    </div>
+
+    <h3>2-4 固定定位 fixed</h3>
+    <p>
+        fixed在计算偏移量时，参照物是浏览器的可视窗口<br>
+        特点：脱标 <br>
+        使用场景：固定某些元素在历览器的可视区域，位置不会随着滚动而变化
+    </p>
+
+    <h3>2-5 粘性定位 sticky</h3>
+    <p>
+        sticky在计算位置时，参照物是浏览器可视窗口；（因为兼容性很差，并不常用，作为了解即可）<br>
+        例如设置top: 10px; 表示这个盒子的top在大于10px时，按照标准流处理，在等于10px时会转变为fixed；<br>
+        特点：这种定位方式有两种状态，类比Unity-ScrollView中的Viewport和Item，Item在Content中的位置是固定的，随着content的滑动，当Item出现在Viewport内时，处于static状态(不脱标)，滑出Viewport范围时处于fixed状态（脱标）
+        <img src="/IMG/sticky理解图.png" alt="">
+    </p>
+
+    <h2>(3) 定位的渲染顺序</h2>
+    当盒子之间有重叠的时候可以用z-index属性来指定遮挡关系，数值大的遮挡数值小的; 注意：这个属性只对position的盒子有效
+    <!-- <div class="container" style="position: relative;">
+        <div class="container1"></div>
+        <div class="container2"></div>
+    </div> -->
+
+    <h2>(4) 拓展小技巧</h2>
+    <h3>4-1 absolute盒子的居中</h3>
+    <p>
+        以前我们盒子的居中方案是margin: auto auto; 这种方案的前提是盒子处于标准流，由于absolute会脱标，我们只能采取计算的方式, 例如：
+    </p>
+    <pre>
+        absoluteBox {
+            position: absolute;
+            
+            // 水平居中
+            left: 50%;
+            margin-left: -width/2; //这一项根据盒子的宽来计算，不建议写死，除非元素很固定，没有更换的需求
+
+            // 竖直居中
+            top: 50%;
+            margin-top: -height/2; //同理
+        }
+    </pre>
+
+    <h3>4-2 特殊性</h3>
+    <ol>
+        <li>
+            和float类似，一个行内元素如果添加了absolute或是fixed，就可以直接设置宽高了，无需再设置display为block或inline-block;<br>
+            一个块级元素如果添设置absolute或是fixed后，在没有设置宽高的情况下，盒子尺寸或自适应为盒子中内容的大小
+        </li>
+
+        <li>
+            float和position都会导致脱标，但也有一点差异，float导致脱标的盒子不会盖住标准流盒子中的文字、图片等，但position会覆盖；<br>
+            原因在于float的诞生的初衷就是为了实现文字环绕效果的
+        </li>
+    </ol>
+
+    <h2>(5) 网页布局总结</h2>
+    关于标准流、浮动流、定位流的使用场景，如下图；<br>
+    <img src="/IMG/网页布局-总结.png" alt="">
+
+</body>
+
+</html>
