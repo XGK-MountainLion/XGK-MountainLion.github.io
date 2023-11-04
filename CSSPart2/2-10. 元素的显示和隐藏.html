@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* p {
+            visibility: visible;
+        } */
+    </style>
+</head>
+
+<body>
+    <h1>元素的显示和隐藏</h1>
+    <h2>(1) display</h2>
+    <p>
+        display: block; // 除了可以将元素设置为块级元素，也有显示的功能 <br>
+        display: none; // 隐藏(实际开发中用的更多一些)
+    </p>
+
+    <h2>(2) visibility</h2>
+    <p>
+        visibility: visible; // 显示 <br>
+        visibility: hidden; // 隐藏
+    </p>
+    <h2>(3) overflow</h2>
+    <p>
+        这个属于用来标识当元素超出盒子边界时该如何处理 <br>
+        overflow: visible; //显示 <br>
+        overflow: hidden; //隐藏 <br>
+        overflow: scroll; //横向和纵向的滑动条，注意无论元素是否超出边界都会有这个滑动条出现 <br>
+        overflow: auto; //当元素超出边界时才会有滑动条出现 <br>
+        需要注意的是：如果盒子使用了position，且他的子元素位置有超出盒子边界的情况存在时，要慎用hidden，因为超出的部分会被隐藏掉
+    </p>
+
+    display和visibility在隐藏上的区别在于：display更像是将active设置为false，后面的标准流会补上占位，而visibility是将alpha值设为了0，只是看不见，但依然占据当前位置
+</body>
+
+</html>

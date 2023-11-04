@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sj-vertical {
+            display: block;
+            width: 0;
+            height: 50px;
+            border-top: 20px solid red;
+            border-right: 10px solid transparent;
+            border-bottom: 20px solid blue;
+            border-left: 10px solid transparent;
+        }
+
+        .sj-horizontal {
+            display: block;
+            width: 50px;
+            height: 0;
+            border-top: 20px solid transparent;
+            border-right: 30px solid green;
+            border-bottom: 20px solid transparent;
+            border-left: 30px solid orange;
+        }
+
+        .mul-ellipsis {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .zjsj {
+            display: block;
+            width: 0px;
+            height: 0px;
+            border-top: 50px solid transparent;
+            border-left: 10px solid green;
+            border-bottom: 0px solid blue;
+            border-right: 30px solid yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        目标：使用Sprite、字体图标、CSS三角、常见的CSS用户界面样式、垂直居中的应用、文字溢出时的省略号、常见的布局技巧
+    </p>
+
+    <h1>一、Sprites 精灵图</h1>
+    <p>
+        类比Unity中的图集(Atlas)，就是将多张图整合成一张大图 <br>
+        使用：background-position: u v; 将背景图设置为这个图集，然后使用background-positon来设置背景图的偏移量，具体的偏移量就是这个Icon的UV坐标;<br>
+        需要注意的时，背景图默认的位置是左上角点和宿主盒子的左上角点对齐，position表示的含义是背景图相对于盒子要怎么移动（u为负数则图左移，y为正数则图下移）
+
+    </p>
+
+    <h1>二、字体图标</h1>
+    <p>
+        iconfont 本质还是文字，比较轻量化，通常用于制作结构简单的小图标；它最大的优点是几乎支持所有的浏览器。
+    </p>
+    <p>
+        字体图标可以理解为字体资产，我们通常使用可以分为三个部分：找到资产（下载或者自己制作）、引入资产、追加资产（添加新的资产）<br>
+    </p>
+    <h2>(1) 找到资产</h2>
+    <p>
+        网上的资产非常丰富，有两个推荐的字体库：<br>
+        <a href="http://icomoon.ic">IcoMoon (优点：字体非常全面；缺点：服务器在国外)</a> <br>
+        <a href="http://www.iconfont.cn"> iconfont (阿里巴巴提供的图库，可以使用AI制作图标上传生成)</a>
+    </p>
+
+    <h2>(2) 引入资产</h2>
+    导入步骤：
+    <ol>
+        <li>下载解压完成后，将压缩包中的fonts文件夹放到html的根目录下</li>
+        <li>声明字体：打开压缩包中的style.css文件，将 @font-face { ...... } 复制到我们的style标签或CSS文件中</li>
+    </ol>
+
+    如何使用字体图标呢？既然它的本质是文字，那么只需要设置字体 + 找到目标Icon对应的文字内容即可，具体如下：
+    <ol>
+        <li>设置字体：在CSS中给要使用字体图标的容器指定font-family属性，设置的值和刚刚复制过来的字体声明中的值保持一致</li>
+        <li>找到对应Icon的文字内容：在压缩包中，有个叫demo.html的文件，找到你想要的icon，复制后同一行内的方框（因为显示不出来，所以是个方框）</li>
+    </ol>
+
+
+    <h2>(3) 追加资产</h2>
+    <p>
+        在网站上找到import icons之类的地方，将压缩包内的selection.json文件上传，此时按照下载时的流程添加需要新增的Icon后重新下载，然后替换掉原来的fonts文件夹即可
+    </p>
+
+    <h1>三、CSS三角</h1>
+    <p>
+        通过给边框上下左右指定不同的颜色可以发现，边框在绘制时是按照对角线均匀划分的
+    </p>
+    <div>
+        <p>
+            因此想绘制竖向的三角形时，只需要将容器的宽度设置为0，同理左右只需要吧高度设置为0
+        </p>
+        <br>
+        <span class="sj-vertical"></span>
+        <pre>
+            .sj-vertical {
+                width: 0px;
+                height: 50px;
+                border-top: 20px solid red;
+                border-right: 10px solid transparent;
+                border-bottom: 20px solid blue;
+                border-left: 10px solid transparent;
+            }
+        </pre>
+
+        <span class="sj-horizontal"></span>
+        <pre>
+            .sj-horizontal {
+                display: block;
+                width: 50px;
+                height: 0;
+                border-top: 20px solid transparent;
+                border-right: 30px solid green;
+                border-bottom: 20px solid transparent;
+                border-left: 30px solid orange;
+            }
+        </pre>
+    </div>
+
+    <h1>四、用户界面相关样式</h1>
+    <h2>(1) 鼠标样式</h2>
+    设置cursor可以改变鼠标样式（鼠标移动到这个元素上时，呈像什么样式, 通常是在js中动态的设置这个属性的值）<br>
+    <img src="../IMG/cursor样式.png" alt="">
+    <div style="cursor: pointer; background-color: pink;">将鼠标移动到此区域，可显示指定的样式</div>
+    <h2>(2) 取消表单(form)轮廓</h2>
+    给input的outline属性设置为none，即可取消表单的轮廓
+    <pre>
+        input {
+            outline: none;
+        }
+    </pre>
+
+    <h2>(3) 防止表单域拖拽</h2>
+    通常表单域是不应该允许用户通过拖拽来改变尺寸的（不排除特殊需求），只需要将resize设置为none即可
+    <pre>
+        input {
+            resize: none;
+        }
+    </pre>
+    <h1>五、vertical-align的应用场景</h1>
+    vertical-align作用于行内元素或行内块元素，可以设置一行内的元素在竖直方向上和文字的对齐方式（参照物是文字）, 通常用于以文字为标准，将同一行内的图片或表单元素与之对齐 <br>
+    <img src="../IMG/Vertical对齐方式.png" alt="">
+    <img src="../IMG/Vertical对齐方式_2.png" alt="">
+
+    <p>
+        和这个属性相关的一个BUG就是:
+        在div的子物体中有一个img，div不设置高度的情况下，应该是div自适应img的尺寸，但如果给div设置一个背景色或是border就能看出来，img下面实际是有一条白色的缝隙的，造成这个BUG的原因就是img的vertical-align属性默认是baseline，只要将这个属性设置为其他的任意值或是将img的display设置为block让vertical-align不生效即可解决这个BUG
+    </p>
+
+    <H1>六、溢出的文字以省略号显示</H1>
+    <H2>(1) 单行文本省略号</H2>
+    <p>
+        首先要求强制将文本显示在一行之内 <mark>white-space: nowrap;</mark> <br>
+        其次设置超出部分样式为隐藏 <mark>overflow: hidden;</mark> <br>
+        最后文字溢出部分样式设置为省略号 <mark>text-over: ellipsis;</mark> <br>
+    </p>
+    <p style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
+        这是一段测试文字: <br>
+        这是一段测试文字这是一段测试文字这是一段测试文字这是一段测试文字这是一段测试文字这是一段测试文字这是一段测试文字这是一段测试文字这是一段测试文字这是一段测试文字
+    </p>
+
+    <H2>(2) 多行文本省略号</H2>
+    这个有较大的兼容性问题，所以作为了解即可，适用于移动端和WebKit内核的浏览器；开发中这种需求一般让后台人员来做
+    <pre>
+        {
+            //首先溢出部分必须要隐藏
+            overflow: hidden;
+
+            //第二 文字溢出部分选择省略号
+            text-overflow: ellipsis;
+
+            //第三 将容器转为webkit盒子
+            display: -webkit-box;
+
+            //第四 设置要显示的文本行数（也就是在第几行显示省略号）
+            -webkit-line-clamp: n; //需要注意的是这里省略号只会出现在第n行，例如：容器总共可以容纳四行文字，用户的输入达到了三行，这个属性如果设置为2的话，效果是第二行有省略号，且第三行依旧有文字显示
+
+            //最后 设置子元素的排列方向为垂直排列
+            -webkit-box-orient: vertical;
+        }
+    </pre>
+
+    <div class="mul-ellipsis" style="width: 150px; height: 80px; background-color: pink;">
+        这是一段测试文字啊 这是一段测试文字啊 这是一段测试文字啊
+    </div>
+
+    <h1>七、布局相关的技巧</h1>
+    <h2>(1) margin负值的运用</h2>
+    <p>
+        1、两个盒子的边框有重叠时，相邻边框会累加而不是重叠，会显得很粗，此时可以将margin设置为负数从而实现边框的重叠 <br>
+        2、要提高某个盒子的层级时（当多个盒子重叠时，让它覆盖其他的盒子），若该盒子没有使用position就添加relative 相对定位，反之增加z-index
+    </p>
+
+
+    <h2>(2) 文字围绕浮动元素</h2>
+    <p>
+        当某个元素希望和多行文字显示在同一行内时，可以利用浮动元素不会压住文字的特性，只需要将元素设置为浮动即可
+    </p>
+
+    <h2>(3) inline-block的运用</h2>
+    <p>
+        当一行内的多个元素需要保持同样的宽高时，可将这些元素转换为行内块元素一起设置，并且可以通过给父元素设置text-align来统一这些行内元素的对齐方式；例如 网页下方的Index栏，居中对齐
+    </p>
+
+    <h2>(4) CSS三角的强化</h2>
+    直角三角形的绘制，
+
+    <div class="zjsj"></div>
+    <pre>
+        .zjsj {
+            display: block;
+            width: 0px;
+            height: 0px;
+            border-top: 50px solid transparent;
+            border-left: 10px solid green;
+            border-bottom: 0px solid blue;
+            border-right: 30px solid yellow;
+        }
+    </pre>
+
+    <h1>八、CSS的初始化</h1>
+    由于不同的浏览器各个元素的默认值都不一样，为了让我们的代码跑在各个浏览器的效果都一样，所以我们会在CSS文件的最开始重新设置各个元素的通用设置（例如
+    所有内外边设为0、li标签去除黑点、img去掉底部的白色缝隙等），这个过程称作初始化。
+</body>
+
+</html>
